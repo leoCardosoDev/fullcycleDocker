@@ -225,4 +225,45 @@ curl http://localhost
 ```
 docker run --rm -d --name nginx --network host nginx
 curl http://localhost
+
+```
+#### 23 - Colocando tudo em prática
+
+##### Passo 1 - Criando um container php (qualquer linguagem)
+
+```
+docker run -it --name php php:7.4-cli bash
+```
+##### Passo 2 - rodando coamdos dentro do bash
+```
+apt-get update
+apt-get install libzep-dev -y
+apt-get install git -y
+```
+##### Passo 3 - Instalar o composer
+```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+php composer-setup.php
+
+php -r "unlink('composer-setup.php');"
+```
+##### Passo 4 - Instalar o phpzip
+```
+docker-php-ext-install zip
+```
+
+##### Passo 5 - Instalar o Laravel
+```
+php composer.phar create-project laravel/laravel:^8.0 laravel
+```
+##### Passo 6 - Fazendo o build da imagem via Dockerfile
+```
+docker build -t leosilvadocker/laravel:latest .
+```
+##### Passo 7 - rodando o container
+```
+docker run --rm --name laravel -p 8000:8000 leosilvadocker/laravel
 ```
