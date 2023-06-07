@@ -134,5 +134,95 @@ docker build -t leosilvadocker/nginx-com-vim:latest .
 
 ```
 docker build -t leosilvadocker/nginx-com-vim:latest .
+
+```
+#### 16 - ENTRYPOINT vs CMD
+
+```
+docker build -t leosilvadocker/hello .
+docker run --rm leosilvadocker/hello:latest
+```
+##### Dicas importantes
+```
+docker ps
+docker ps -a
+docker ps -a -q
+```
+##### apagar todos os containers
+```
+docker rm $(docker ps -a -q) -f
+```
+##### apagar todas as imagens
+```
+docker rmi $(docker images -q) -f
 ```
 
+#### 17 - Docker entrypoint exec
+
+```
+```
+#### 18 - Publicando imagem no Dockerhub
+
+```
+docker push leosilvadocker/nginx-fullcycle
+```
+
+#### 19 - Entendento tipos de Network
+
+```
+Bridge
+Host
+Overlay
+maclan
+none
+```
+
+#### 20 - Trabalhando com bridge
+
+```
+docker network
+```
+```
+docker network ls
+```
+```
+docker network prune
+```
+```
+docker run -d -it --name ubuntu1 bash
+docker run -d -it --name ubuntu2 bash
+```
+```
+docker network inspect bridge
+```
+```
+docker attach ubuntu1
+```
+##### Criando uma nova rede (network)
+```
+docker network create --driver bridge minharede
+```
+```
+docker run -d -it --name ubuntu1 --network minharede bash
+```
+##### Conectando um container numa rede
+```
+docker network connect minharede ubuntu3
+```
+```
+docker network inspect minharede
+```
+
+#### 21 - Trabalhando com host
+
+```
+docker run --rm -d --name nginx --network host nginx
+curl http://localhost
+```
+
+#### 22 - Container acessando nossa maquina
+
+```
+docker run --rm -d --name nginx --network host nginx
+curl http://localhost
+```
