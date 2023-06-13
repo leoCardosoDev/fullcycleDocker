@@ -267,3 +267,11 @@ docker build -t leosilvadocker/laravel:latest .
 ```
 docker run --rm --name laravel -p 8000:8000 leosilvadocker/laravel
 ```
+
+#### 24 - Otimização utilizando Multistage Building
+
+##### O comando "-f Dockerfile.prod" é para mudar o Dockerfile padrão
+
+```
+docker build -t leosilvadocker/laravel:prod . -f Dockerfile.prod
+```
