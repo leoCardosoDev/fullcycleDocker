@@ -286,3 +286,22 @@ docker run -d --network laranet --name laravel leosilvadocker/laravel:prod
 ```
 docker run -d --network laranet --name nginx -p 8080:80 leosilvadocker/nginx:prod
 ```
+
+#### 25 - Docker-Compose
+
+##### Depois de criar e configurar o arquivo docker-compose.yaml
+
+```
+docker-compose up
+```
+##### desatachar do terminal
+
+```
+docker-compose up -d
+
+```
+##### para buildar todas as imagens modificadas
+
+```
+docker-compose up -d --build
+```
