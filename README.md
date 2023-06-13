@@ -275,3 +275,14 @@ docker run --rm --name laravel -p 8000:8000 leosilvadocker/laravel
 ```
 docker build -t leosilvadocker/laravel:prod . -f Dockerfile.prod
 ```
+##### conectando a imagem laravel a um network
+
+```
+docker run -d --network laranet --name laravel leosilvadocker/laravel:prod
+
+```
+##### conectando a imagem nginx a um network
+
+```
+docker run -d --network laranet --name nginx -p 8080:80 leosilvadocker/nginx:prod
+```
