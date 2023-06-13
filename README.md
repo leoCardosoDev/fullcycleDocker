@@ -301,7 +301,6 @@ docker-compose up -d
 
 ```
 ##### para buildar todas as imagens modificadas
-
 ```
 docker-compose up -d --build
 ```
